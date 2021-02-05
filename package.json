@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "start": "UMI_UI=1 umi dev",
+    "start": "umi dev",
     "build": "umi build",
     "test": "umi test",
     "lint": "eslint {src,mock,tests}/**/*.{js,jsx} --fix",

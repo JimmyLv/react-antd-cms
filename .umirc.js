@@ -24,6 +24,10 @@ export default {
           component: './articles',
         },
         {
+          path: '/posts',
+          component: './posts',
+        },
+        {
           path: '/',
           component: '../pages/index',
         },
