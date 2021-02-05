@@ -5,7 +5,9 @@ export default {
     '/api': {
       target: 'http://jsonplaceholder.typicode.com/',
       changeOrigin: true,
-      pathRewrite: { '^/api': '' },
+      pathRewrite: {
+        '^/api': '',
+      },
     },
   },
   routes: [
@@ -16,6 +18,10 @@ export default {
         {
           path: '/products',
           component: './products',
+        },
+        {
+          path: '/articles',
+          component: './articles',
         },
         {
           path: '/',
