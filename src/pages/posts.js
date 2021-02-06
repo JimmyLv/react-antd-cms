@@ -1,29 +1,30 @@
-import { useEffect, useState } from 'react'
-import { Post } from '../components/Post'
-import * as postService from '../services/posts'
-import styles from './posts.css'
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Post } from '../components/Post';
+import { getLoading, getPosts } from '../models/post';
+import styles from './posts.css';
 
 export default function() {
-  const [posts, setPosts] = useState([]);
+  const dispatch = useDispatch();
+  const posts = useSelector(getPosts);
+  const loading = useSelector(getLoading);
 
   useEffect(() => {
-    async function fetchData() {
-      const posts = await postService.query({ page: 1, limit: 5 });
-
-      setPosts(posts);
-    }
-
-    fetchData();
+    dispatch({ type: 'post/query' });
   }, []);
 
   return (
     <div className={styles.normal}>
       <h1>Page posts</h1>
-      <div>
-        {posts.map(post => (
-          <Post key={post.id} post={post} />
-        ))}
-      </div>
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <div>
+          {posts.map(post => (
+            <Post key={post.id} post={post} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

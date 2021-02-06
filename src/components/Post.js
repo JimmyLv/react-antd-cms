@@ -5,6 +5,7 @@ import * as userService from '../services/users';
 export function Post({ post }) {
   const [user, setUser] = useState({});
   useEffect(() => {
+    // dispatch({ type: 'user/query', payload: post.userId });
     async function fetchData() {
       const user = await userService.query(post.userId);
       setUser(user);
